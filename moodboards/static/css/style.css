@@ -1,0 +1,169 @@
+/* Global Styles */
+body {
+    background-color: aliceblue;
+}
+.navbar-toggler {
+    border-color: white !important; /* Change border color */
+}
+.title /*MoodBoard Marketplace*/
+{
+	/* font: italic 3rem "Fira Sans",serif; */
+  /* font: italic small-caps bold 3rem cursive; */
+  font-family: "Caprasimo";
+	text-align: center;
+	margin:2rem;
+}
+/* Navbar */
+.navbar {
+    background-color: #1E1F26  !important;  /* balck */
+    padding:0;
+}
+
+.navbar-brand
+{
+	height:100%;
+	padding:0;
+}
+.navbar-brand img {
+	width:100px;
+    max-height:4rem;   
+}
+.navbar a {
+    color: #F8F9FA !important; /*white*/
+}
+
+.navbar a:hover {
+    color:#D4AF37 !important; /* Muted Gold */
+}
+/* Explore Section */
+.explore {
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 20px;
+}
+
+.explore-text {
+    background-color: #B8A1D9;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.explore-image {
+    background-color: white;
+    color: black;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Designers Section */
+.designers {
+    gap: 20px;
+    background-color:white;
+    position:relative;
+}
+
+.designers-card {
+    background-color: #1E3A5F;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    flex: 1;
+    text-align: center;
+}
+.designers-more,.categories-more 
+{
+	position: absolute;
+    bottom: 10px; 
+    right: 10px; 
+    font-size: 1.5rem;
+    transition: all 0.2s ease-in-out;
+}
+.navbar .dropdown-menu
+{
+	background-color:black;
+}
+.quick-link:hover
+{
+	text-decoration:underline;
+}
+/* Tooltip Styling */
+.designers-more::after,.categories-more::after {
+    content: "Explore more";  /* Tooltip text */
+    position: absolute;
+    bottom: -30px; 
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.5rem;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    pointer-events: none;
+}
+
+.designers-more:hover::after,.categories-more:hover::after {
+    opacity: 1;
+}
+.designers-more:hover,.categories-more:hover
+{
+    transform: scale(1.2,1.2);
+    cursor:pointer;
+}
+/* Categories Section */
+.categories {
+    gap: 20px;
+    background-color:white;
+    position:relative;
+}
+
+.category-card {
+    background-color: #2A9D8F;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    flex: 1;
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Watermark effect */
+.watermark-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.watermark-container img {
+    width: 100%;
+    opacity: 0.7; /* Slightly faded */
+}
+
+.watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.4);
+    padding: 15px;
+    width: 90%;
+    text-align: center;
+    border-radius: 8px;
+}

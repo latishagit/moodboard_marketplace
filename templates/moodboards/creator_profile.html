@@ -1,0 +1,40 @@
+{% extends 'moodboards/base.html' %}
+{% block title %}{{ creator.username }}'s Profile{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <div class="text-center">
+        <img src="{{ creator.profile_image.url }}" alt="{{ creator.username }}" class="rounded-circle" width="120">
+        <h2>{{ creator.username }}</h2>
+        <p>Role: {{ creator.get_role_display }}</p>
+    </div>
+
+   {% if is_logged_in %}
+    <a href="{% url 'hire_designer' creator.id %}" class="btn btn-primary">Hire Me</a>
+{% else %}
+    <a href="{% url 'login' %}" class="btn btn-warning">Login to Hire</a>
+{% endif %}
+
+
+    <h3 class="mt-4">Moodboards by {{ creator.username }}</h3>
+    <div class="row  border rounded shadow p-3">
+        {% for moodboard in moodboards %}
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ moodboard.image.url }}" class="card-img-top" alt="{{ moodboard.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ moodboard.title }}</h5>
+                        <p class="card-text">Category: {{ moodboard.category }}</p>
+                        <p class="card-text">Average Rating: {{ moodboard.average_rating|default:"No ratings yet" }}</p>
+                        <a href="{% url 'moodboard_details' moodboard.category.id|default:0 moodboard.id %}" class="btn btn-primary">View Moodboard</a>
+
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p>No moodboards created yet.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+

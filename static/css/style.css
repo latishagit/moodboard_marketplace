@@ -1,0 +1,153 @@
+/* Global Styles */
+body {
+    font-family: "Merriweather";
+    /* background: #F5E1C8; */
+    background-color: aliceblue;
+}
+.title /*MoodBoard Marketplace*/
+{
+	/* font: italic 3rem "Fira Sans",serif; */
+  /* font: italic small-caps bold 3rem cursive; */
+  font-family: "Caprasimo";
+	text-align: center;
+	margin:2rem;
+}
+/* Navbar */
+.navbar {
+    background-color: #1E1F26  !important;  /* balck */
+    padding:0;
+}
+
+.navbar-brand
+{
+	height:100%;
+	padding:0;
+}
+.navbar-brand img {
+	width:100px;
+    max-height:4rem;   
+}
+.navbar a {
+    color: #F8F9FA !important; /*white*/
+}
+
+.navbar a:hover {
+    color:#D4AF37 !important; /* Muted Gold */
+}
+.navbar .dropdown-menu
+{
+	background-color:black;
+}
+/* Explore Section */
+.explore {
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 20px;
+}
+
+.explore-text {
+    background-color: blue;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.explore-image {
+    background-color: white;
+    color: black;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Designers Section */
+.designers {
+    gap: 20px;
+}
+
+.designers-card {
+    background-color: #ff5733; /* Red-Orange */
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    flex: 1;
+    text-align: center;
+}
+
+/* Categories Section */
+.categories {
+    gap: 20px;
+}
+
+.category-card {
+    background-color: #2ecc71; /* Green */
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    flex: 1;
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/*Star rating*/
+
+.stars {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.star {
+    font-size: 2rem;
+    color: gray;
+    margin: 0 5px;
+    transition: color 0.3s;
+}
+
+.star.filled {
+    color: gold; /* Star color when filled */
+}
+
+/* Optional: Highlight stars on hover */
+.star:hover,
+.star:hover ~ .star {
+    color: gold;
+}
+
+/* Watermark effect */
+.watermark-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.watermark-container img {
+    width: 100%;
+    opacity: 0.7; /* Slightly faded */
+}
+
+.watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.4);
+    padding: 15px;
+    width: 90%;
+    text-align: center;
+    border-radius: 8px;
+}
+

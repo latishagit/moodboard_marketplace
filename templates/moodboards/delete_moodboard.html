@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Moodboard</title>
+</head>
+<body>
+    <h2>Are you sure you want to delete "{{ moodboard.title }}"?</h2>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Yes, Delete</button>
+    </form>
+    <a href="{% url 'moodboard_list' %}">Cancel</a>
+</body>
+</html>
+

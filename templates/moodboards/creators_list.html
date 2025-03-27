@@ -1,0 +1,41 @@
+{% extends 'moodboards/base.html' %}
+
+{% block title %}Categories - Moodboard Marketplace{% endblock %}
+
+{% block content %}
+<div class="container  p-5 my-5 border rounded shadow">
+    <h2 class="text-center">Creators/Designers</h2>
+    <h4 class="text-center">✨Explore Creators' latest creations✨</h4>
+   <div class="categories container d-flex flex-row flex-wrap justify-content-evenly mt-5 mb-5 p-5">
+    {% for designer in designers %}
+        
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{ designer.profile_image.url }}" alt="{{ designer.name }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ designer.username }}</h5>
+              <p class="card-text">Connect @: {{ designer.email }}</p>
+              <p class="card-text">Speciality :{{ designer.speciality }}</p>
+              <!--{% if buyer %}-->
+    <a href="{% url 'hire_designer' designer.id buyer.id %}" class="btn btn-primary">Hire Me</a>
+ <!--{% else %}-->
+    <!--<a href="{% url 'login' %}" class="btn btn-primary">Hire Me</a>-->
+<!--{% endif %}-->
+
+
+            </div>
+          </div>
+
+    {% empty %}
+        <p>No creators available yet.</p>
+    {% endfor %}
+
+
+   </div>
+</div>
+{% endblock %}
+
+
+
+
+
+

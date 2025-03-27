@@ -1,0 +1,38 @@
+{% extends 'moodboards/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Login - Moodboard Marketplace{% endblock %}
+
+{% block content %}
+<div class="container w-50 p-5 my-5 border rounded shadow">
+{% if error %}
+    <p style="color: red;">{{ error }}</p>
+{% endif %}
+<h2 class="text-center">Login</h2>
+<form method="post" class="p-5">
+    {% csrf_token %}
+    {{ form|crispy }} 
+     <input type="hidden" name="next" value="{{ request.GET.next }}">
+    <label for="username">Username</label>
+    <input type="text" name="username" placeholder="Username" id="username" required class="form-control m-2"> 
+    <label for="password">Password</label>
+    <input type="password" name="password" placeholder="Password" id="password" required class="form-control  m-2">
+    <button type="submit" class="btn btn-primary w-100 mt-3">Login</button>
+
+<p>Don't have an account? <a href="{% url 'register' %}">Sign Up</a></p>
+
+<p><a href="{% url 'password_reset' %}">Forgot Password?</a></p>
+</div>
+</form>
+
+{% endblock %}
+
+
+
+
+
+
+    
+ 
+
+
+

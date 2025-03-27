@@ -1,0 +1,44 @@
+{% extends 'moodboards/base.html' %}
+{% block title %}Dashboard- Moodboard Marketplace{% endblock %}
+{% load static %}
+{% block content %}
+
+
+<h2 class="m-3">Welcome, {{ user.username }} ...</h2>
+<h2 class="text-center">Buyer Dashboard</h2>
+<div class="container bg-white rounded m-5">
+<h3 class="your_purchases m-4 p-2 d-inline">Your Purchases</h3>
+
+    {% for purchase in purchases %}
+    <div class="purchased_moodboard card  p-2 m-2 shadow p-3 mb-5 bg-white rounded ">
+        <h6 class="card-title">{{ purchase.moodboard.title }} </h6> <div class="card-body">
+        <p class="card-text text-justify">{{ purchase.purchase_date }}</p>
+         <p class="card-text text-justify">{{ purchase.price }}</p>
+        
+        {% empty %}
+        <p>No purchases made yet.</p>
+        
+    {% endfor %}
+</ul>
+
+<hr>
+
+<h3>Your Hire Requests</h3>
+<ul>
+    {% for request in sent_hire_requests %}
+        <li>
+            <strong>To: {{ request.recipient.username }}</strong> - {{ request.message }}
+            <span class="{% if request.status == 'accepted' %}text-success{% elif request.status == 'rejected' %}text-danger{% endif %}">
+                {{ request.status|capfirst }}
+            </span>
+        </li>
+    {% empty %}
+        <li>No hire requests sent yet.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
+
+     	
+        		
+        		

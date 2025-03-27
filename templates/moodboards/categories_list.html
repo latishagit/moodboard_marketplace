@@ -1,0 +1,29 @@
+{% extends 'moodboards/base.html' %}
+
+{% block title %}Categories - Moodboard Marketplace{% endblock %}
+
+{% block content %}
+<div class="container  p-5 my-5 border rounded shadow">
+    <h2 class="text-center">Categories/Themes</h2>
+    <h4 class="text-center">✨Explore Category/Themewise creations✨</h4>
+   <div class="categories container d-flex flex-row flex-wrap justify-content-evenly mt-5 mb-5 p-5">
+    {% for category in categories %}
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{ category.image.url }}" alt="{{ category.name }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ category.name }}</h5>
+              <p class="card-text">{{ category.description }}</p>
+              <i class="categories-more fa-solid fa-arrow-up-right-from-square" 
+              onclick="location.href='{% url 'moodboard_list' category.id %}'"> </i>
+            </div>
+          </div>
+
+    {% empty %}
+        <p>No categories available yet.</p>
+    {% endfor %}
+
+
+   </div>
+</div>
+{% endblock %}
+

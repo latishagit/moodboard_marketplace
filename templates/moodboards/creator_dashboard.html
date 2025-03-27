@@ -1,0 +1,58 @@
+{% extends 'moodboards/base.html' %}
+{% block title %}Dashboard- Moodboard Marketplace{% endblock %}
+{% load static %}
+{% block content %}
+
+
+<link rel="stylesheet" href="{% static 'css/creator_dashboard.css' %}">
+<h2 class="text-center m-5">Welcome, {{ user.username }} (Creator)</h2>
+
+<div class="container bg-white rounded">
+<h3 class="your_moodboards m-4 p-2 d-inline">Your Moodboards</h3>
+		<i class="fa-solid fa-plus bg-primary text-white rounded p-2" onclick="location.href='{% url 'create_moodboard' %}'"></i>
+	<div class="container d-flex">
+		
+    		{% for moodboard in moodboards %}
+        	<div class="creator_moodboard card  p-2 m-2 shadow p-3 mb-5 bg-white rounded w-25">
+        		<h6 class="card-title">{{ moodboard.title }}</h6>
+        		<img src="{{ moodboard.image.url }}" alt="Moodboard" class="card-img-top">
+        		<div class="card-body">
+            			<p class="card-text text-justify">{{ moodboard.description }}</p>
+          		</div>
+          <!--<button class="btn btn-primary w-50">Buy</button>-->
+          <i class="categories-more fa-solid fa-arrow-up-right-from-square" 
+   onclick="location.href='{% url 'moodboard_details' moodboard.category.id moodboard.id %}'">
+</i>
+        </div>
+    {% endfor %}
+</div>
+<hr>
+<h3>Hire Requests</h3>
+<ul>
+    {% for request in hire_requests %}
+        <li>
+            <strong>{{ request.sender.username }} ({{ request.sender.email }})</strong> - {{ request.message }}
+
+            {% if request.status == "accepted" %}
+                <button class="btn btn-success btn-sm" disabled>Accepted</button>
+            {% elif request.status == "rejected" %}
+                <button class="btn btn-danger btn-sm" disabled>Rejected</button>
+            {% else %}
+                <form method="post" action="{% url 'respond_to_hire_request' request.id 'accept' %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-success btn-sm">Accept</button>
+                </form>
+                <form method="post" action="{% url 'respond_to_hire_request' request.id 'reject' %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-sm">Reject</button>
+                </form>
+            {% endif %}
+        </li>
+    {% empty %}
+        <li>No hire requests yet.</li>
+    {% endfor %}
+</ul>
+
+
+</div>
+{% endblock %}

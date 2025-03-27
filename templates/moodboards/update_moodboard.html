@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Moodboard</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <h2 align="center">Update Moodboard</h2>
+     <table class="table">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <tr>
+        <td><label for="title">Title:</label></td>
+        <td><input type="text" name="title" value="{{ moodboard.title }}" required></td>
+	</tr>
+	
+	<tr>
+        <td><label for="description">Description:</label></td>
+        <td><textarea name="description" required>{{ moodboard.description }}</textarea></td>
+        </tr>
+
+	<tr>
+        <td><label for="image">Upload New Image (Optional):{{ moodboard.image.url }}?{{ moodboard.updated_at|date:'U' }}</label>
+        <br>
+        <img src="{{ moodboard.image.url }}" alt="Moodboard" width="200">
+        </td>
+        <td><input type="file" name="image"></td>
+	</tr>
+
+	<tr>
+        <td><button type="submit">Update</button></td>
+        </tr>
+        
+    </form>
+    </table>
+    <a href="{% url 'moodboard_list' %}">Back to Moodboards</a>
+</body>
+</html>
+

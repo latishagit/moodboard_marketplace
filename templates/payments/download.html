@@ -1,0 +1,16 @@
+{% extends 'moodboards/base.html' %}
+
+{% block content %}
+<div class="container text-center mt-5">
+    <h2>Download Moodboard</h2>
+    <p>Thank you for your purchase! You can now download your moodboard.</p>
+
+    <img src="{{ moodboard.image.url }}" alt="Moodboard Preview" class="img-fluid shadow rounded" style="max-width: 400px;">
+
+    <div class="mt-4">
+        <a href="{{ moodboard.image.url }}" download class="btn btn-primary">Download Now</a>
+        <a href="{% url 'moodboard_list' moodboard.category.id %}" class="btn btn-secondary">Back to Moodboards</a>
+    </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,82 @@
+{% extends 'moodboards/base.html' %}
+{% load static %}
+{% block title %}About Us - Moodboard Marketplace{% endblock %}
+
+{% block content %}
+<section class="about-us container my-5">
+    <h1 class="text-center mb-4">About Us</h1>
+    
+    <!-- Introduction -->
+    <div class="row p-4 border-bottom border-2 border-dark">
+        <div class="col-md-6">
+            <p>
+                <strong>Moodboard Marketplace</strong> is an innovative platform that connects creative designers with businesses, marketers, and individuals looking for professional moodboards. Whether you're an interior designer, brand strategist, photographer, or fashion expert, our platform allows you to buy, sell, and showcase high-quality moodboards effortlessly.
+            </p>
+            <p>
+                We believe that creativity should be accessible, and our goal is to provide a structured marketplace where designers can monetize their work while clients find inspirational designs tailored to their needs.
+            </p>
+        </div>
+        <div class="col-md-6 text-center">
+            <img src="{% static 'images/background.png' %}" class="img-fluid rounded shadow" alt="Moodboard Collaboration">
+        </div>
+    </div>
+
+    <!-- Our Mission & Vision -->
+    <div class="row mt-5 p-4 bg-light border-start border-4 border-primary">
+        <div class="col-md-6">
+            <h2>🎯 Our Mission</h2>
+            <p>
+                To empower creators and designers by offering a seamless marketplace where they can showcase, sell, and collaborate with clients worldwide.
+            </p>
+        </div>
+        <div class="col-md-6">
+            <h2>🔮 Our Vision</h2>
+            <p>
+                To become the leading global platform for moodboard trading and designer-client collaboration, ensuring fair compensation for creatives and high-quality design assets for buyers.
+            </p>
+        </div>
+    </div>
+
+    <!-- How It Works -->
+    <div class="row mt-5 text-center p-5 border-bottom border-2 border-dark">
+        <h2 class="mb-4">🚀 How It Works</h2>
+        <div class="col-md-4">
+            <h3>🛍️ Browse & Purchase</h3>
+            <p>Buyers can explore and purchase high-quality moodboards from top designers.</p>
+        </div>
+        <div class="col-md-4">
+            <h3>🎨 Upload & Sell</h3>
+            <p>Designers can upload and sell their moodboards while protecting their work.</p>
+        </div>
+        <div class="col-md-4">
+            <h3>💼 Hire Creators</h3>
+            <p>Clients can hire designers for custom projects and collaborations.</p>
+        </div>
+    </div>
+
+    <!-- Why Choose Us -->
+    <div class="row mt-5 p-5 bg-light border-start border-4 border-success">
+        <h2 class="text-center mb-4">💡 Why Choose Moodboard Marketplace?</h2>
+        <div class="col-md-6">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Secure transactions</strong> and authentication.</li>
+                <li class="list-group-item"><strong>Intellectual property protection</strong> with watermarking.</li>
+                <li class="list-group-item"><strong>User-friendly platform</strong> with easy navigation.</li>
+                <li class="list-group-item"><strong>Diverse categories</strong> across branding, interior design, fashion, and more.</li>
+            </ul>
+        </div>
+        <div class="col-md-6 text-center">
+            <img src="{% static 'images/why-choose-us.png' %}" class="img-fluid rounded shadow" alt="Why Choose Moodboard Marketplace">
+        </div>
+    </div>
+
+    <!-- Contact & Join Us -->
+    <div class="text-center mt-5 p-4 border-top border-3 border-dark">
+        <h2>📢 Join Our Creative Community!</h2>
+        <p>Sign up today as a designer or buyer and explore a world of inspiring designs.</p>
+        <a href="{% url 'register' %}" class="btn btn-primary">Get Started</a>
+        <a href="{% url 'contact' %}" class="btn btn-outline-dark">Contact Us</a>
+    </div>
+</section>
+{% endblock %}
+

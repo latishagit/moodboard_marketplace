@@ -1,0 +1,23 @@
+{% extends 'moodboards/base.html' %}
+{% block title %}Hire {{ designer.username }}{% endblock %}
+{% block content %}
+
+<div class="container mt-5">
+    <h2>Hire {{ designer.username }}</h2>
+    <p><strong>Email:</strong> {{ designer.email }}</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        
+        <div class="mb-3">
+            <label for="message" class="form-label"><strong>Message to Designer:</strong></label>
+            <textarea id="message" name="message" class="form-control" rows="4" placeholder="Write a message for {{ designer.username }}" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Send Request</button>
+        <a href="{% url 'creators' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+
+{% endblock %}
+

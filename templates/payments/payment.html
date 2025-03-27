@@ -1,0 +1,16 @@
+{% extends 'moodboards/base.html' %}
+
+{% block content %}
+<div class="container text-center mt-5 p-5">
+    <h2>Confirm Your Purchase</h2>
+    <p>You're about to buy <strong>{{ moodboard.title }}</strong>.</p>
+    <p><strong>Price:</strong> Rs.{{ moodboard.price }}</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-success">Confirm Payment</button>
+        <a href="{% url 'moodboard_list' moodboard.category_id  %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}
+
