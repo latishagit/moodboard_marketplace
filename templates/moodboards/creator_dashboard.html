@@ -28,11 +28,18 @@
 </div>
 <hr>
 <h3>Hire Requests</h3>
-<ul>
-    {% for request in hire_requests %}
-        <li>
-            <strong>{{ request.sender.username }} ({{ request.sender.email }})</strong> - {{ request.message }}
 
+<table class="table">
+<tr>
+	<th>User</th>
+	<th>Request</th>
+	<th>Status</th>
+</tr>
+    {% for request in hire_requests %}
+        <tr>
+            <td><strong>{{ request.sender.username }} ({{ request.sender.email }})</strong></td> 			
+            <td>{{ request.message }}</td>
+			<td>
             {% if request.status == "accepted" %}
                 <button class="btn btn-success btn-sm" disabled>Accepted</button>
             {% elif request.status == "rejected" %}
@@ -47,12 +54,12 @@
                     <button type="submit" class="btn btn-danger btn-sm">Reject</button>
                 </form>
             {% endif %}
-        </li>
+        	</td>
+        </tr>
     {% empty %}
-        <li>No hire requests yet.</li>
+        <tr>No hire requests yet.</tr>
     {% endfor %}
-</ul>
-
+</table>
 
 </div>
 {% endblock %}

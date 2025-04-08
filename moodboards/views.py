@@ -18,6 +18,7 @@ import os
 from django.conf import settings
 from django.http import Http404
 from django.contrib import messages
+from .tasks import send_welcome_email
 
 '''class CustomPasswordResetView(PasswordResetView):
     def form_valid(self, form):
@@ -171,7 +172,8 @@ def register_user(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)  # Auto-login after registration
+            login(request, user) # Auto-login after registration
+            send_welcome_email.delay(user.email, user.username)  
             return redirect('dashboard')  # Redirect to dashboard based on role
     else:
         form = RegisterForm()
@@ -407,5 +409,12 @@ def respond_to_hire_request(request, request_id, action):
 
     return redirect('creator_dashboard')  # Redirect back to update UI
 
+
+# After user signs up
+def signup_view(request):
+    if request.method == 'POST':
+        # Assuming you've already created the user
+        user = User.objects.create_user(...)
+        send_welcome_email.delay(user.email, user.username)
 
 
