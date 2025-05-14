@@ -10,7 +10,7 @@ class RegisterForm(UserCreationForm):
     speciality = forms.ChoiceField(choices=User.Categories, required=False, label="Speciality")
     class Meta:
         model = User
-        fields = ["username", "email", "role", "password1", "password2","speciality"]
+        fields = ["username", "email", "role", "password1", "password2","speciality","profile_image"]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -20,15 +20,7 @@ class RegisterForm(UserCreationForm):
         self.helper.form_method = 'post'
         
         # Custom layout for the form
-        self.helper.layout = Layout(
-            Field('username', css_class='form-control custom-username'),
-            Field('email', css_class='form-control custom-email'),
-            Field('role', css_class='form-control custom-role'),
-            Field('password1', css_class='form-control custom-password'),
-            Field('password2', css_class='form-control custom-password'),
-            Field('speciality', css_class='form-control custom-speciality'),
-            Submit('submit', 'Register', css_class='btn btn-primary custom-submit')
-        )
+       
 
 #Moodboard form-------------------------------
 class MoodboardForm(forms.ModelForm):
@@ -39,7 +31,7 @@ class MoodboardForm(forms.ModelForm):
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['username', 'email', 'profile_image']
+        fields = ['username', 'email', 'profile_image','speciality']
         
 
 class ContactForm(forms.ModelForm):

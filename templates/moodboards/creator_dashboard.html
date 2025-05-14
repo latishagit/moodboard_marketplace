@@ -5,7 +5,11 @@
 
 
 <link rel="stylesheet" href="{% static 'css/creator_dashboard.css' %}">
-<h2 class="text-center m-5">Welcome, {{ user.username }} (Creator)</h2>
+<h2 class="text-center mt-5">Welcome, {{ user.username }} (Creator)</h2>
+
+<div class="text-center">
+	<a href="{% url 'profile' %}" class="btn btn-primary mb-5">Edit Profile</a>
+</div>
 
 <div class="container bg-white rounded">
 <h3 class="your_moodboards m-4 p-2 d-inline">Your Moodboards</h3>

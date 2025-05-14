@@ -22,23 +22,35 @@
             alert("Right-click is disabled on this page.");
         });
     });
-    
-    //Star rating functionality
-    function setRating(rating) {
-        var stars = document.querySelectorAll('.star');
+    document.addEventListener('DOMContentLoaded', function () {
+    const stars = document.querySelectorAll('.star');
+    const ratingInput = document.getElementById('rating');
+    let currentRating = parseInt(ratingInput.value);
+
+    function fillStars(rating) {
         stars.forEach((star, index) => {
-            if (index < rating) {
-                star.classList.add('filled');
-            } else {
-                star.classList.remove('filled');
-            }
+            star.classList.toggle('filled', index < rating);
         });
-        document.getElementById('rating').value = rating; // Store the selected rating in a hidden input
     }
+
+    stars.forEach((star, index) => {
+        star.addEventListener('mouseenter', () => fillStars(index + 1));
+        star.addEventListener('mouseleave', () => fillStars(currentRating));
+        star.addEventListener('click', () => {
+            currentRating = index + 1;
+            ratingInput.value = currentRating;
+        });
+    });
+
+    fillStars(currentRating); 
+});
+
+   
     
 </script>
 <style>
 /* Star rating */
+/* Container styling for rating section */
 .rating-review {
     margin-top: 20px;
     padding: 20px;
@@ -47,27 +59,26 @@
     background-color: #f9f9f9;
 }
 
+/* Star container */
 .stars {
     display: flex;
     cursor: pointer;
     margin-bottom: 10px;
 }
 
+/* Each star */
 .star {
     font-size: 2rem;
     color: gray;
     margin: 0 5px;
-    transition: color 0.3s;
+    transition: color 0.3s ease;
 }
 
+/* Filled (active) star */
 .star.filled {
-    color: gold; /* Star color when filled */
-}
-
-.star:hover,
-.star:hover ~ .star {
     color: gold;
 }
+
 
 /* Watermark effect */
 .watermark-container {
@@ -86,7 +97,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 2rem;
+    font-size: 8rem;
     font-weight: bold;
     color: rgba(255, 255, 255, 0.7);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);

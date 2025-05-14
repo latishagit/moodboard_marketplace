@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import Moodboard, Category, Review, Purchase, Message, User, Payment, ContactMessage
 from django.contrib.auth import login, authenticate, logout
-from .forms import RegisterForm, MoodboardForm, ContactForm
+from .forms import RegisterForm, MoodboardForm, ContactForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
 from .decorators import creator_required
 from django.contrib.auth.views import PasswordResetView
@@ -169,7 +169,7 @@ def contact(request):
 # Signup View----------------------------------------------------
 def register_user(request):
     if request.method == "POST":
-        form = RegisterForm(request.POST)
+        form = RegisterForm(request.POST, request.FILES)
         if form.is_valid():
             user = form.save()
             login(request, user) # Auto-login after registration
@@ -210,11 +210,11 @@ def profile(request):
         form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
             form.save()
-            return redirect('profile')
+            return redirect('dashboard')
     else:
         form = ProfileUpdateForm(instance=request.user)
 
-    return render(request, 'profile.html', {'form': form})
+    return render(request, 'moodboards/profile.html', {'form': form})
 
 
 #Creator Profile------------------------------------

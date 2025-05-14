@@ -29,7 +29,7 @@ class User(AbstractUser):
 	]
     email = models.EmailField(unique=True)
     role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='buyer')
-    profile_image = models.ImageField(upload_to='profile_images/', default='/media/profile_images/default.jpeg', blank=True)
+    profile_image = models.ImageField(upload_to='profile_images/', default='profile_images/default.jpeg', blank=True)
     speciality = models.CharField(max_length=30, choices=Categories, default='All')
     def __str__(self):
     	return f"{self.username} is the {self.role}"

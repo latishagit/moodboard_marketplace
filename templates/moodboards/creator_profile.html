@@ -4,7 +4,7 @@
 {% block content %}
 <div class="container mt-5 mb-5">
     <div class="text-center">
-        <img src="{{ creator.profile_image.url }}" alt="{{ creator.username }}" class="rounded-circle" width="120">
+        <img src="{{ creator.profile_image.url }}" alt="{{ creator.username }}" class="rounded-circle" width="120" height="120">
         <h2>{{ creator.username }}</h2>
         <p>Role: {{ creator.get_role_display }}</p>
     </div>

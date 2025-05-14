@@ -1,6 +1,6 @@
 {% extends 'moodboards/base.html' %}
 
-{% block title %}Categories - Moodboard Marketplace{% endblock %}
+{% block title %}Creators - Moodboard Marketplace{% endblock %}
 
 {% block content %}
 <div class="container  p-5 my-5 border rounded shadow">
@@ -12,14 +12,15 @@
         <div class="card" style="width: 18rem;">
             <img class="card-img-top" src="{{ designer.profile_image.url }}" alt="{{ designer.name }}">
             <div class="card-body">
-              <h5 class="card-title">{{ designer.username }}</h5>
+              <h5 class="card-title" onclick="location.href='{% url 'creator_profile' designer.id %}'">{{ designer.username }}</h5>
               <p class="card-text">Connect @: {{ designer.email }}</p>
               <p class="card-text">Speciality :{{ designer.speciality }}</p>
-              <!--{% if buyer %}-->
-    <a href="{% url 'hire_designer' designer.id buyer.id %}" class="btn btn-primary">Hire Me</a>
- <!--{% else %}-->
-    <!--<a href="{% url 'login' %}" class="btn btn-primary">Hire Me</a>-->
-<!--{% endif %}-->
+              {% if user.is_authenticated and user.role == 'buyer' %}
+    <a href="{% url 'hire_designer' designer.id %}" class="btn btn-primary">Hire Me</a>
+		{% else %}
+    <a href="{% url 'login' %}" class="btn btn-primary">Hire Me</a>
+	{% endif %}
+
 
 
             </div>

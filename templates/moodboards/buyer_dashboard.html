@@ -4,7 +4,7 @@
 {% block content %}
 
 
-<h2 class="m-3">Welcome, {{ user.username }} ...</h2>
+<h2 class="m-3">Welcome, {{ user.username }} ...</h2><a href="{% url 'profile' %}" class="btn btn-primary mx-2">Edit Profile</a>
 <h2 class="text-center">Buyer Dashboard</h2>
 <div class="container bg-white rounded m-5">
 <h3 class="your_purchases m-4 p-2 d-inline">Your Purchases</h3>
